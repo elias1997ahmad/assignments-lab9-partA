@@ -1,0 +1,67 @@
+<html>
+
+<head>
+
+</head>
+
+<body>
+    <p>Enter # of boxes to generate!!!!</p>
+    <input type="letters" id='id1'>
+    <button id='id2'>ENTER</button>
+    <br>
+    <br>
+    <br>
+    <br>
+    <script>
+
+        document.getElementById('id2').onclick = makeBox;
+        let width = (window.innerWidth / 2) - 100
+        let height = (window.innerHeight / 2) - 100
+
+        function position(posx) {
+            this.posx = posx
+        }
+        function makeBox() {
+            var enteredVal = document.getElementById('id1').value;
+            value = parseInt(enteredVal);
+            if (value > 0 && value <= 100) {
+                for (i = 0; i < value; i++) {
+                    let btn = document.createElement('button');
+                    document.body.appendChild(btn);
+                    btn.style.width = '150px';
+                    btn.style.height = '55px';
+                    btn.style.background = ranColor();
+                    for (j = 0; j < value; j++) {
+                        function alternateMovment() {
+                            left = ((Math.random() * (window.innerWidth - 150)) + 'px');
+                            top = ((Math.random() * (window.innerHeight - 150)) + 'px');
+                            btn.style.position = 'absolute';
+                            btn.style.left = left;
+                            btn.style.top = top;
+                        }
+                    } setInterval(alternateMovment, 2000)
+
+
+
+
+                }
+            }
+            else {
+                alert('Enter a number from 0 to 100 !')
+            }
+        }
+
+        function ranColor() {
+            let letters = '0123456789ABCDEF';
+            let color = '#';
+            for (let i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+        }
+
+    </script>
+
+</body>
+
+</html>
